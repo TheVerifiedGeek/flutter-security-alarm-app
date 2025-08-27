@@ -1,0 +1,47 @@
+name: sacco_secure
+publish_to: "none"
+description: SaccoSecure Alarm Monitoring App – Offline-first
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+
+  flutter:
+
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  # Data
+
+  sqflite: ^2.4.0
+  path: ^1.9.0
+  path_provider: ^2.1.4
+  shared_preferences: ^2.3.2
+  intl: ^0.19.0
+
+  # Device / OS
+  crypto: ^3.0.0
+
+  local_auth: ^2.3.0
+  another_telephony: ^0.4.1
+  workmanager: ^0.5.2
+  flutter_local_notifications: ^17.2.3
+
+  # Docs
+  pdf: ^3.11.0
+  printing: ^5.13.2
+
+  # State mgmt (lightweight)
+
+  provider: ^6.1.2
+
+  # UI
+  google_fonts: ^6.2.1
+
+flutter:
+ uses-material-design: true
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
