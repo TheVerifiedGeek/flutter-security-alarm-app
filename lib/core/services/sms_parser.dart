@@ -45,7 +45,7 @@ class SMSIngestor {
     }
   }
 
-  static backgroundMessageHandler(SmsMessage m) async {
+  static Future<void> backgroundMessageHandler(SmsMessage m) async {
     // Optional: implement background processing if needed
   }
 

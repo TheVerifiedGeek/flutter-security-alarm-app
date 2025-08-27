@@ -6,7 +6,8 @@ const _taskId = 'daily_trouble_summary';
 
 class SchedulerService {
   static Future<void> init() async {
-    await Workmanager().initialize(_callbackDispatcher, isInDebugMode: false);
+    // Removed deprecated isInDebugMode
+    await Workmanager().initialize(_callbackDispatcher);
     await scheduleDaily0730();
   }
 
@@ -16,7 +17,7 @@ class SchedulerService {
       _taskId,
       frequency: const Duration(hours: 24),
       initialDelay: _next0730Delay(),
-      constraints: Constraints(networkType: NetworkType.not_required),
+      constraints: Constraints(networkType: NetworkType.notRequired),
     );
   }
 
@@ -35,10 +36,22 @@ void _callbackDispatcher() {
       final today = DateTime.now();
       final troubles = await logDao.yesterdayTroubles(today);
       if (troubles.isEmpty) {
-        await NotificationService.show(id: 730, title: 'Daily Summary', body: 'All OK yesterday.');
+        await NotificationService.show(
+          id: 730,
+          title: 'Daily Summary',
+          body: 'All OK yesterday.',
+        );
       } else {
-        final lines = troubles.map((e) => '- ${e.branch}: ${e.status} (${e.compliance}) @ ${e.timestamp.toLocal()}').join('\n');
-        await NotificationService.show(id: 731, title: 'Daily Trouble Summary', body: lines);
+        final lines = troubles
+            .map((e) =>
+                '- ${e.branch}: ${e.status} (${e.compliance}) @ ${e.timestamp.toLocal()}')
+            .join('\n');
+
+        await NotificationService.show(
+          id: 731,
+          title: 'Daily Trouble Summary',
+          body: lines,
+        );
       }
     }
     return Future.value(true);

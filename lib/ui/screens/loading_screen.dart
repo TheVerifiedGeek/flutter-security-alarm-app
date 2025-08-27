@@ -8,7 +8,7 @@ import 'dashboard_screen.dart'; // Import DashboardScreen
 
 
 class LoadingScreen extends StatefulWidget {
-  const LoadingScreen({Key? key}) : super(key: key);
+  const LoadingScreen({super.key});
 
   @override
   LoadingScreenState createState() => LoadingScreenState();
